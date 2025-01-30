@@ -18,7 +18,7 @@ def predict(request):
 
 
 def result(request):
-    data = pd.read_csv(r"C:\Users\Divine Effiom\OneDrive\Documents\Portfolio Projects\Meri Skill Projects\Diabetes Prediction Project\diabetes.csv")
+    data = pd.read_csv("diabetes.csv")
 
     X = data.drop("Outcome", axis=1)
     Y = data['Outcome']

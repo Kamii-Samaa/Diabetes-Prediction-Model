@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 
 # Load the dataset
-data = pd.read_csv(r"C:\Users\Divine Effiom\OneDrive\Documents\Portfolio Projects\Meri Skill Projects\Diabetes Prediction Project\diabetes.csv")
+data = pd.read_csv("diabetes.csv")
 
 # Prepare the data
 X = data.drop("Outcome", axis=1)
