@@ -21,15 +21,19 @@ model.fit(X_train, Y_train)
 st.title("Diabetes Prediction")
 
 # Input fields
+import streamlit as st
+
 st.header("Please enter data into the following")
-val1 = st.number_input("Number of  Pregnancies")
-val2 = st.number_input("Glucose")
-val3 = st.number_input("Blood Pressure")
-val4 = st.number_input("Skin Thickness")
-val5 = st.number_input("Insulin")
-val6 = st.number_input("BMI")
-val7 = st.number_input("Diabetes Pedigree Function")
-val8 = st.number_input("Age")
+
+# Specify the appropriate types for each variable
+val1 = st.number_input("Number of Pregnancies", min_value=0, step=1)  # Integer
+val2 = st.number_input("Glucose", min_value=0.0, step=0.1)  # Float
+val3 = st.number_input("Blood Pressure", min_value=0.0, step=0.1)  # Float
+val4 = st.number_input("Skin Thickness", min_value=0.0, step=0.1)  # Float
+val5 = st.number_input("Insulin", min_value=0.0, step=0.1)  # Float
+val6 = st.number_input("BMI", min_value=0.0, step=0.1)  # Float
+val7 = st.number_input("Diabetes Pedigree Function", min_value=0.0, step=0.01)  # Float
+val8 = st.number_input("Age", min_value=0, step=1)  # Integer
 
 # Predict button
 st.text("Click the button below to check if you have diabetes")
@@ -37,7 +41,7 @@ if st.button("Check"):
     paired = model.predict([[val1, val2, val3, val4, val5, val6, val7, val8]])
     result1 = ""
     if paired == [1]:
-        result1 = "You just might have Diabetes, Consult your physician"
+        result1 = "You have Diabetes, Please consult your physician"
     elif paired == [0]:
-        result1 = "Looks like you don't have diabetes"
+        result1 = "Great news, you are not diabetic"
     st.write(result1)
