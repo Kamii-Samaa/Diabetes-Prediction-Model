@@ -43,8 +43,10 @@ def form_page():
 
 
  # Predict button
-    st.text("Click the button below to check if you have diabetes")
-
+    if val8:
+        check = st.text("Click the button below to check if you have diabetes")
+    if check:
+        st.button("Run Check")
     if st.button("Run Check"):
         # Store user input in session state
         st.session_state["user_input"] = [val2, val3, val4, val5, val6, val7, val8]
