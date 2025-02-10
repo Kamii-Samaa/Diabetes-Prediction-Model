@@ -7,7 +7,7 @@ from sklearn.linear_model import LogisticRegression
 data = pd.read_csv("diabetes.csv")
 
 # Prepare the data
-X = data.drop("Outcome", axis=1)
+X = data.drop("Outcome","Preganancies", axis=1)
 Y = data['Outcome']
 
 # Split the data
@@ -26,7 +26,6 @@ import streamlit as st
 st.header("Please enter data into the following")
 
 # Specify the appropriate types for each variable
-val1 = st.number_input("Number of Pregnancies", min_value=0, step=1)  # Integer
 val2 = st.number_input("Glucose", min_value=0.0, step=0.1)  # Float
 val3 = st.number_input("Blood Pressure", min_value=0.0, step=0.1)  # Float
 val4 = st.number_input("Skin Thickness", min_value=0.0, step=0.1)  # Float
@@ -38,7 +37,7 @@ val8 = st.number_input("Age", min_value=0, step=1)  # Integer
 # Predict button
 st.text("Click the button below to check if you have diabetes")
 if st.button("Check"):
-    paired = model.predict([[val1, val2, val3, val4, val5, val6, val7, val8]])
+    paired = model.predict([[val2, val3, val4, val5, val6, val7, val8]])
     result1 = ""
     if paired == [1]:
         result1 = "You have Diabetes, Please consult your physician"

@@ -7,7 +7,7 @@ from sklearn.linear_model import LogisticRegression
 data = pd.read_csv("diabetes.csv")
 
 # Prepare the data
-X = data.drop("Outcome", axis=1)
+X = data.drop(columns=['Outcome','Pregnancies'], axis=1)
 Y = data['Outcome']
 
 # Split the data
@@ -27,21 +27,19 @@ def form_page():
     st.subheader("Please fill out the following fields:")
 
     # Input fields with "Enter data here" as placeholders
-    val1 = st.number_input("Number of Pregnancies", min_value=0, step=1, placeholder="Enter data here")  # Integer
-    if val1 : 
-        val2 = st.number_input("Glucose", min_value=0.0, step=0.1, placeholder="Enter data here")  # Float
-        if val2:   
-            val3 = st.number_input("Blood Pressure", min_value=0.0, step=0.1, placeholder="Enter data here")  # Float
-            if val3:
-                val4 = st.number_input("Skin Thickness", min_value=0.0, step=0.1, placeholder="Enter data here")  # Float
-                if val4:
-                    val5 = st.number_input("Insulin", min_value=0.0, step=0.1, placeholder="Enter data here")  # Float
-                    if val5:
-                        val6 = st.number_input("BMI", min_value=0.0, step=0.1, placeholder="Enter data here")  # Float
-                        if val6:
-                            val7 = st.number_input("Diabetes Pedigree Function", min_value=0.0, step=0.01, placeholder="Enter data here")  # Float
-                            if val7:
-                                val8 = st.number_input("Age", min_value=0, step=1, placeholder="Enter data here")  # Integer
+    val2 = st.number_input("Glucose", min_value=0.0, step=0.1, placeholder="Enter data here")  # Float
+    if val2:   
+        val3 = st.number_input("Blood Pressure", min_value=0.0, step=0.1, placeholder="Enter data here")  # Float
+        if val3:
+            val4 = st.number_input("Skin Thickness", min_value=0.0, step=0.1, placeholder="Enter data here")  # Float
+            if val4:
+                val5 = st.number_input("Insulin", min_value=0.0, step=0.1, placeholder="Enter data here")  # Float
+                if val5:
+                    val6 = st.number_input("BMI", min_value=0.0, step=0.1, placeholder="Enter data here")  # Float
+                    if val6:
+                        val7 = st.number_input("Diabetes Pedigree Function", min_value=0.0, step=0.01, placeholder="Enter data here")  # Float
+                        if val7:
+                            val8 = st.number_input("Age", min_value=0, step=1, placeholder="Enter data here")  # Integer
 
 
  # Predict button
@@ -49,7 +47,7 @@ def form_page():
 
     if st.button("Run Check"):
         # Store user input in session state
-        st.session_state["user_input"] = [val1, val2, val3, val4, val5, val6, val7, val8]
+        st.session_state["user_input"] = [val2, val3, val4, val5, val6, val7, val8]
         st.session_state["page"] = "result"
 
 # Define the result page function
@@ -72,7 +70,7 @@ def result_page():
 # Display the correct page based on session state
 if st.session_state["page"] == "home":
     st.title("Diabetes Prediction App")
-    st.text("This app predicts whether or not you have diabetes with an accuracy of 75%.")
+    st.text("This app predicts whether or not you have diabetes with an accuracy of 83%.")
     st.text("Click the button below to begin.")
     
     if st.button("Let's get to it"):
